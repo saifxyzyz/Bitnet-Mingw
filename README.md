@@ -186,7 +186,7 @@ conda activate bitnet-cpp
 pip install -r requirements.txt
 ```
 3. Build the project
-For initializing the build folder run:
+   For initializing the build folder run:
 ```
 cmake -B build -S . -G "MinGW MakeFiles" -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_COMPILER=C:/msys64/bin/g++.exe -DCMAKE_CXX_FLAGS="-D_WIN32_WINNT=0x0602" -DGGML_NATIVE
 cmake --build build --config Release
