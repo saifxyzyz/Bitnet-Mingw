@@ -161,12 +161,7 @@ This project is based on the [llama.cpp](https://github.com/ggerganov/llama.cpp)
 - python>=3.9
 - cmake>=3.22
 - clang>=18
-    - For Windows users, install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/). In the installer, toggle on at least the following options(this also automatically installs the required additional tools like CMake):
-        -  Desktop-development with C++
-        -  C++-CMake Tools for Windows
-        -  Git for Windows
-        -  C++-Clang Compiler for Windows
-        -  MS-Build Support for LLVM-Toolset (clang)
+    - For Windows users, install [MinGW](https://sourceforge.net/projects/mingw/). In the installer, toggle on the Clang and C++ dependencies.
     - For Debian/Ubuntu users, you can download with [Automatic installation script](https://apt.llvm.org/)
 
         `bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"`
@@ -191,6 +186,11 @@ conda activate bitnet-cpp
 pip install -r requirements.txt
 ```
 3. Build the project
+For initializing the build folder run:
+```
+cmake -B build -S . -G "MinGW MakeFiles" -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_COMPILER=C:/msys64/bin/g++.exe -DCMAKE_CXX_FLAGS="-D_WIN32_WINNT=0x0602" -DGGML_NATIVE
+cmake --build build --config Release
+```
 ```bash
 # Manually download the model and run with local path
 huggingface-cli download microsoft/BitNet-b1.58-2B-4T-gguf --local-dir models/BitNet-b1.58-2B-4T
